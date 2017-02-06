@@ -9,8 +9,6 @@ module.exports = {
 	show: function(req,res){
                 
         var express = require('express'),
-        // routes = require('./routes'),
-        // user = require('./routes/user'),
         http = require('http'),
         path = require('path'),
         fs = require('fs');
@@ -48,58 +46,24 @@ module.exports = {
     
 
     app.use(bodyParser.json());
-
-    
-	// var q = req.body.query;
 	cloudant.find({
 		 "selector": {
     "_id":{"$gt":null}
   },
   "fields": [
-    "questions"
+      "questions"
   ]
-//   "type":"json"
 	},
 	   function(err, data){
 	  	if(!err){
-              var contents= [];
-                        
-            //   data.docs.forEach(function(line){
-            //    contents+=line;
-                
-            // });
-            // console.log(contents);
-            
-            //   res.send(data.docs);
-            res.render('question_show',{question: []});
+           var questions = [];
+            for(var i = 0 ; i < data.docs[0].questions.length ; i++){
+                questions.push(data.docs[0].questions[i]);
+            }
+            res.render('question_show',{questions: questions});
 	  	}else
 	  	console.log(err);
 	  });
-
-    //     questions = [
-    //       { 
-    // 	  'id' : 1, 
-    // 	  'question':  'Qual a sua renda mensal?' ,
-    //       'type': "text"
-    //      },
-    //  	{
-    //  	 'id' : 2, 
-    // 	  'question':  'Qual o valor que voce quer contribuir para a previdencia?' ,
-    //       'type': "text"
-    //     },
-    // 	{
-    // 	'id' : 3, 
-    // 	  'question':  'Qual tipo de declaracao de imposto de renda voce usa?' ,
-    //       'type': "radio",
-    //       'options': 
-    //           [
-    //           'Completa',
-    //           'Simplificada',
-    //           'Nao sei'
-    //     ]
-    //      }
-    //     ];
-    //     res.render('question_show',{questions:questions});
     },
 
     
