@@ -92,12 +92,21 @@ module.exports.connections = {
   // Custom cloudant install adapter 
   //  npm install sails-couchdb-orm --save
 
+  // couch: {
+  //   adapter : 'sails-couchdb-orm',
+  //   username: "e23324c6-1287-4ece-9025-0fe31eb0773a-bluemix",
+  //   password: "4ddc961b8ae7aece099a0f55402332a8de46e0fb453e2fd8ab1b07f31e26756d",
+  //   host: "e23324c6-1287-4ece-9025-0fe31eb0773a-bluemix.cloudant.com",
+  //   port: 443,
+  //   url: "https://e23324c6-1287-4ece-9025-0fe31eb0773a-bluemix:4ddc961b8ae7aece099a0f55402332a8de46e0fb453e2fd8ab1b07f31e26756d@e23324c6-1287-4ece-9025-0fe31eb0773a-bluemix.cloudant.com"
+  // }
   couch: {
-    adapter : 'sails-couchdb-orm',
-     username: "e23324c6-1287-4ece-9025-0fe31eb0773a-bluemix",
-     password: "4ddc961b8ae7aece099a0f55402332a8de46e0fb453e2fd8ab1b07f31e26756d",
-     host: "e23324c6-1287-4ece-9025-0fe31eb0773a-bluemix.cloudant.com",
-     port: 443,
-     url: "https://e23324c6-1287-4ece-9025-0fe31eb0773a-bluemix:4ddc961b8ae7aece099a0f55402332a8de46e0fb453e2fd8ab1b07f31e26756d@e23324c6-1287-4ece-9025-0fe31eb0773a-bluemix.cloudant.com"  }
-
+     adapter : 'sails-couchdb-orm',
+      username: "a0002eb5-0af4-4fad-8476-ca5aee1bc2bc-bluemix",
+      password: "534c44621147eb8f20e2173e27ceb7f411f26c734132d0c160d593ed77975d03",
+      host: "a0002eb5-0af4-4fad-8476-ca5aee1bc2bc-bluemix.cloudant.com",
+      port: 443,
+      url: "https://a0002eb5-0af4-4fad-8476-ca5aee1bc2bc-bluemix:534c44621147eb8f20e2173e27ceb7f411f26c734132d0c160d593ed77975d03@a0002eb5-0af4-4fad-8476-ca5aee1bc2bc-bluemix.cloudant.com"
+    }
+    
 };

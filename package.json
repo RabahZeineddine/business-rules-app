@@ -5,10 +5,14 @@
   "description": "a Sails application",
   "keywords": [],
   "dependencies": {
-    "body-parser": "1.14.x",
+   "express": "4.13.x",
+    "ejs": "2.4.x",
     "cloudant": "1.4.x",
-    "ejs": "2.3.4",
+    "body-parser": "1.14.x",
+    "method-override": "2.3.x",
+    "morgan": "1.6.x",
     "errorhandler": "1.4.x",
+    "connect-multiparty": "2.0.x",
     "grunt": "1.0.1",
     "grunt-contrib-clean": "1.0.0",
     "grunt-contrib-coffee": "1.0.0",
@@ -22,7 +26,6 @@
     "grunt-sails-linker": "~0.10.1",
     "grunt-sync": "0.5.2",
     "include-all": "^1.0.0",
-    "method-override": "2.0.x",
     "rc": "1.0.1",
     "sails": "~0.12.11",
     "sails-couchdb-orm": "^0.10.3",
@@ -36,6 +39,9 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/anonymous node/sails user/test-project.git"
+  },
+   "engines": {
+  	"node": "4.x"
   },
   "author": "anonymous node/sails user",
   "license": ""

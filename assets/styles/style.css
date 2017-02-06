@@ -120,6 +120,5 @@ body{
     height: 50px;
     display: flex;
     justify-content: center;
-    align-content: center;
-    background-color: red;
+    align-content: center;   
 }

@@ -11,7 +11,8 @@ module.exports = {
     questions:{
         id : 'String',
         question: 'String',
-        type: 'String'
+        type: 'String',
+        option: []
     }
   }
 };

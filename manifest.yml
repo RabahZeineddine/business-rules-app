@@ -3,8 +3,8 @@ applications:
   memory: 512M
   instances: 1
   domain: mybluemix.net
-  name: rzeined-previdencia
-  host: rzeined-previdencia
+  name: rzeined-final-test
+  host: rzeined-final-test
   disk_quota: 1024M
   services:
-  - rzeined-previdencia-cloudantNoSQLDB
+  - rzeined-final-test-cloudantNoSQLDB
