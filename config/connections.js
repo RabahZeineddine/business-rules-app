@@ -102,11 +102,11 @@ module.exports.connections = {
   // }
   couch: {
      adapter : 'sails-couchdb-orm',
-      username: "a0002eb5-0af4-4fad-8476-ca5aee1bc2bc-bluemix",
-      password: "534c44621147eb8f20e2173e27ceb7f411f26c734132d0c160d593ed77975d03",
-      host: "a0002eb5-0af4-4fad-8476-ca5aee1bc2bc-bluemix.cloudant.com",
-      port: 443,
-      url: "https://a0002eb5-0af4-4fad-8476-ca5aee1bc2bc-bluemix:534c44621147eb8f20e2173e27ceb7f411f26c734132d0c160d593ed77975d03@a0002eb5-0af4-4fad-8476-ca5aee1bc2bc-bluemix.cloudant.com"
-    }
+     username: "a0002eb5-0af4-4fad-8476-ca5aee1bc2bc-bluemix",
+     password: "534c44621147eb8f20e2173e27ceb7f411f26c734132d0c160d593ed77975d03",
+     host: "a0002eb5-0af4-4fad-8476-ca5aee1bc2bc-bluemix.cloudant.com",
+     port: 443,
+     url: "https://a0002eb5-0af4-4fad-8476-ca5aee1bc2bc-bluemix:534c44621147eb8f20e2173e27ceb7f411f26c734132d0c160d593ed77975d03@a0002eb5-0af4-4fad-8476-ca5aee1bc2bc-bluemix.cloudant.com"
+     }
     
 };

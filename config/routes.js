@@ -36,7 +36,8 @@ module.exports.routes = {
     view: 'homepage'
   },
   '/question-show':'UserController.show',
-  '/show':{ view: 'question_show'}
+  '/show':{ view: 'question_show'},
+  '/calculate':'UserController.calculate'
 
   /***************************************************************************
   *                                                                          *

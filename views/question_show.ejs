@@ -28,16 +28,17 @@ body{display: flex;flex-direction: column;justify-content: space-between;align-c
 </div>
 <div class="show_body">
     <div class="show_questions" id="show_questions">
+    <form action = "/calculate" method="POST">
         <div class="question">
         <% questions.forEach( function( model ){ %>
             <p><%=model.question %></p>
             <%if  (model.type == "text" ) {%>
-                <input type="text"/>
+                <input type="text" name="<%= model.id %>"/>
            <% } %>
             <%if  (model.type == "radio" ) {%>
                 <div class="radio_answers">
                    <% model.options.forEach (function (op){%>
-                    <input type="radio" name="radio-answer" id="<%= op %>"/><label for="<%= op %>"><%= op %></label></br>
+                    <input type="radio" name="radio-answer" id="<%= op %>" value="<%= op %>"/><label for="<%= op %>"><%= op %></label></br>
                    <% }) %>
                 </div>
            <% } %>
@@ -47,12 +48,13 @@ body{display: flex;flex-direction: column;justify-content: space-between;align-c
         </div>
            
         <div class="btn-calcular">
-            <button onclick="calculate()" value="Calcular">Calcular</button>
+            <input type="submit" value="Calcular"/>
         </div>
+        </form>
     </div>
     <div id="show_result"></div>
 </div>
-<div class=""show_footer">
+<div class="show_footer">
         <p>IBM Brasil</p>
 </div>
 
