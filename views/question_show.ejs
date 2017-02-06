@@ -1,4 +1,3 @@
-
 <style> html , body{margin: 0;padding: 0;height: 100%;width: 100%;}
 body{display: flex;flex-direction: column;justify-content: space-between;align-content: space-between;}
 .navbar ul{list-style:  none;display: flex;flex-direction: row;padding: 0;margin: 0;}
@@ -22,19 +21,40 @@ body{display: flex;flex-direction: column;justify-content: space-between;align-c
 </style>
 
 
+
 <div class="show_header">
         <h2>Simulador de Previdênicia</h2>
-        <nav class="navbar"> 
-      <ul>
-        <a href="#"><li>Adicionar perguntas</li></a>
-        <a href="/question-show" ><li>Responder perguntas</li></a>
-      </ul>
-    </nav>
+        <a href="/" class="main-link">Principal</a>
 </div>
 <div class="show_body">
-    
+    <div class="show_questions" id="show_questions">
+        <div class="question">
+        <% questions.forEach( function( model ){ %>
+            <p><%=model.question %></p>
+            <%if  (model.type == "text" ) {%>
+                <input type="text"/>
+           <% } %>
+            <%if  (model.type == "radio" ) {%>
+                <div class="radio_answers">
+                   <% model.options.forEach (function (op){%>
+                    <input type="radio" name="radio-answer" id="<%= op %>"/><label for="<%= op %>"><%= op %></label></br>
+                   <% }) %>
+                </div>
+           <% } %>
+           
+        <% }); %>
+            
+        </div>
+           
+        <div class="btn-calcular">
+            <button onclick="calculate()" value="Calcular">Calcular</button>
+        </div>
+    </div>
+    <div id="show_result"></div>
 </div>
 <div class=""show_footer">
         
 </div>
 
+
+<script src="js/question_show.js"></script>

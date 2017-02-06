@@ -3,9 +3,8 @@ applications:
   memory: 512M
   instances: 1
   domain: mybluemix.net
-  name: business-rules-example-app
-  host: business-rules-example-app
+  name: rzeined-previdencia
+  host: rzeined-previdencia
   disk_quota: 1024M
   services:
-  - business-rules-example-app-cloudantNoSQLDB
-  - business-rules-example-app-BusinessRules
+  - rzeined-previdencia-cloudantNoSQLDB

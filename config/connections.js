@@ -28,9 +28,9 @@ module.exports.connections = {
   * Installed by default.                                                    *
   *                                                                          *
   ***************************************************************************/
-  localDiskDb: {
-    adapter: 'sails-disk'
-  },
+  // localDiskDb: {
+  //   adapter: 'sails-disk'
+  // },
 
   /***************************************************************************
   *                                                                          *
@@ -88,5 +88,16 @@ module.exports.connections = {
   * More adapters: https://github.com/balderdashy/sails                      *
   *                                                                          *
   ***************************************************************************/
+
+  // Custom cloudant install adapter 
+  //  npm install sails-couchdb-orm --save
+
+  couch: {
+    adapter : 'sails-couchdb-orm',
+     username: "e23324c6-1287-4ece-9025-0fe31eb0773a-bluemix",
+     password: "4ddc961b8ae7aece099a0f55402332a8de46e0fb453e2fd8ab1b07f31e26756d",
+     host: "e23324c6-1287-4ece-9025-0fe31eb0773a-bluemix.cloudant.com",
+     port: 443,
+     url: "https://e23324c6-1287-4ece-9025-0fe31eb0773a-bluemix:4ddc961b8ae7aece099a0f55402332a8de46e0fb453e2fd8ab1b07f31e26756d@e23324c6-1287-4ece-9025-0fe31eb0773a-bluemix.cloudant.com"  }
 
 };
