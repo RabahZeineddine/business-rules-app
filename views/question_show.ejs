@@ -1,62 +1,62 @@
-<style> html , body{margin: 0;padding: 0;height: 100%;width: 100%;}
-body{display: flex;flex-direction: column;justify-content: space-between;align-content: space-between;}
-.navbar ul{list-style:  none;display: flex;flex-direction: row;padding: 0;margin: 0;}
-.navbar ul li {margin: 5px;color: #fff;/*padding: 5px;padding: 5px;margin: 1px;border: 1px outset #000;*/}
-.navbar ul a{text-decoration: none;color: #000;font-size: 12pt;}
-.navbar ul a:hover li{color:#d8d8d8;}
-.show_header{width: 100%;height: 150px;background-color: blue;display: flex;flex-direction: column;justify-content: center;align-items: center;}
-.main-link{text-decoration: none;font-size: 12pt;color: #fff;}
-.main-link:hover {color: #d8d8d8;}
-.show_body{display: flex;justify-content: center;    }
-.show_questions  {background-color: #d8d8d8;border: 1px solid black; border-radius: 10px;width: 250px;padding-bottom: 5px;}
-.question{display: flex;flex-direction: column;padding: 0 5px; }
-.question p{font-size: 14pt;margin: 5px;}
-.question input[type='text']{padding: 8px;border: 1px solid #000;}
-.radio_answers{margin: 0;padding: 0;}
-.radio_answers label{font-size: 12pt;}
-.btn-calcular{padding: 0 5px;}
-.btn-calcular button{cursor: pointer;border: none;border: 1px solide #4472C4;border-radius: 8px;width: 100%;background-color: #4472C4;margin: 5px 0;padding: 8px;color: #fff;font-size: 12pt;}
-.show_footer{height: 50px;display: flex;justify-content: center;align-content: center;}
 
-</style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link href="styles/style.css" rel="stylesheet" />
 
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Simulador de Previdência</a>
+    </div>
 
-
-<div class="show_header">
-        <h2>Simulador de Previdênicia</h2>
-        <a href="/" class="main-link">Principal</a>
-</div>
+    
+      <ul class="nav navbar-nav">
+        <li><a href="#">Adicionar perguntas</a></li>
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 <div class="show_body">
-    <div class="show_questions" id="show_questions">
-    <form action = "/calculate" method="POST">
-        <div class="question">
-        <% questions.forEach( function( model ){ %>
-            <p><%=model.question %></p>
-            <%if  (model.type == "text" ) {%>
-                <input type="text" name="<%= model.id %>"/>
-           <% } %>
-            <%if  (model.type == "radio" ) {%>
-                <div class="radio_answers">
-                   <% model.options.forEach (function (op){%>
-                    <input type="radio" name="radio-answer" id="<%= op %>" value="<%= op %>"/><label for="<%= op %>"><%= op %></label></br>
-                   <% }) %>
-                </div>
-           <% } %>
-           
-        <% }); %>
-            
+    <div class="show_questions" >
+        <form action = "/calculate" method="POST">
+            <div class="question">
+                <% questions.forEach( function( model ){ %>
+                    <p><%=model.question %></p>
+                    <%if  (model.type == "text" ) {%>
+                        <% if(typeof(result) !== 'undefined') { %>
+                            <input type="text" name="<%= model.input_name %>" required="required" value="<%=result[model.input_name]%>"/>
+                        <% }else { %>
+                            <input type="text" name="<%= model.input_name %>" required="required"/>
+                        <% } %>
+                    <% } %>
+                    <%if  (model.type == "radio" ) {%>
+                        <div class="radio_answers">
+                            <% model.options.forEach (function (op){%>
+                                <% if (typeof(result) !== 'undefined' && op == result["declaracaoIR"] ) { %>
+                                    <input type="radio" name="<%= model.input_name %>" id="<%= op %>" value="<%= op %>" required="required" checked/><label for="<%= op %>"><%= op %></label></br>
+                                <% }else{ %>
+                                    <input type="radio" name="<%= model.input_name %>" id="<%= op %>" value="<%= op %>" required="required"/><label for="<%= op %>"><%= op %></label></br>
+                                <% } %>
+                            <% }) %>
+                        </div>
+                    <% } %>
+                <% }); %>
         </div>
-           
         <div class="btn-calcular">
-            <input type="submit" value="Calcular"/>
+            <input class="div-btn" type="submit" value="Calcular"/>
         </div>
         </form>
     </div>
-    <div id="show_result"></div>
+    <% if(typeof(result) !== 'undefined') {%>
+        <div class="show_result">
+    <p>O tipo de previdência recomendado para você é:</p>
+    <div class="result_div">
+        <p><%= result.planoPrevidencia %></p>
+    </div>
+    </div>
+    <% }%>
 </div>
 <div class="show_footer">
-        <p>IBM Brasil</p>
+        <p>Footer</p>
 </div>
 
-
-<script src="js/question_show.js"></script>

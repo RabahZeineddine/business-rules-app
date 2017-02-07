@@ -5,7 +5,7 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
-var globalLength;
+var global_questions;
 module.exports = {
 	show: function(req,res){
             
@@ -18,8 +18,8 @@ module.exports = {
             for(var i = 0 ; i < data.docs[0].questions.length ; i++){
                 questions.push(data.docs[0].questions[i]);
             }
-            globalLength = data.docs[0].questions.length;
-            res.render('question_show',{questions: questions});
+            global_questions = questions;
+            res.render('question_show',{ questions: questions});
 	  	}else
 	  	console.log(err);
 	  });
@@ -28,91 +28,93 @@ module.exports = {
 
     calculate: function(req,res){
       
-    //   for(var i = 0 ; i< globalLength;i++){
-          
-    //   }
+        var result = {};
+        var url = require('url'), https = require('https');
 
-            var url = require('url'), https = require('https');
+        var rules = {
+            "executionRestUrl" : "https://brsv2-48900cea.ng.bluemix.net/DecisionService/rest",
+            "user" : "resAdmin",
+            "password" : "1hvb23e0v0do2"
+        };
 
-            var rules = {
-                "executionRestUrl" : "https://brsv2-48900cea.ng.bluemix.net/DecisionService/rest",
-                "user" : "resAdmin",
-                "password" : "1hvb23e0v0do2"
+
+
+        var rendaMensal = req.param('rendaMensal');
+        var valorContribuicao = req.param('valorContribuicao');
+        var declaracaoIR = req.param('declaracaoIR');
+        var planoPrevidencia = "String";
+        var contribuicao_versus_renda = 100; // Will change on response ( i think ) 
+        var __DecisionID__ = "1";  //Unique ID 
+        var threshold_renda_valorContribuicao = 12;
+        
+
+        function invokeRulesService(rules, rulesetPath, inputParams, callback) {
+            var restUrl = url.parse(rules.executionRestUrl);
+            var dataString = JSON.stringify(inputParams);
+            // encode 'user:password' in Base64 string for basic authentication of the execution API
+            var encodedCredentials = new Buffer(rules.user + ':' + rules.password).toString('base64');
+
+            var headers = {
+                'Content-Type' : 'application/json',
+                'Content-Length' : dataString.length,
+                'Authorization' : 'Basic ' + encodedCredentials // basic authentication header
             };
 
- 
+            var options = {
+                host : restUrl.host,
+                path : restUrl.path + rulesetPath,
+                method : 'POST',
+                headers : headers
+            };
 
-            var rendaMensal = 1500;
-            var valorContribuicao = 1500;
-            var declaracaoIR = "Completa"
-            var planoPrevidencia = "String";
-            var contribuicao_versus_renda = 100;
-            var __DecisionID__ = "1";  //Unique ID 
-            var threshold_renda_valorContribuicao = 12;
-            var seniority = 10;
+            var req = https.request(options, function(resp) {
+                resp.setEncoding('utf-8');
+                var responseString = '';
 
-
-            function invokeRulesService(rules, rulesetPath, inputParams, callback) {
-                var restUrl = url.parse(rules.executionRestUrl);
-                var dataString = JSON.stringify(inputParams);
-                // encode 'user:password' in Base64 string for basic authentication of the execution API
-                var encodedCredentials = new Buffer(rules.user + ':' + rules.password).toString('base64');
-
-                var headers = {
-                    'Content-Type' : 'application/json',
-                    'Content-Length' : dataString.length,
-                    'Authorization' : 'Basic ' + encodedCredentials // basic authentication header
-                };
-
-                var options = {
-                    host : restUrl.host,
-                    path : restUrl.path + rulesetPath,
-                    method : 'POST',
-                    headers : headers
-                };
-
-                var req = https.request(options, function(resp) {
-                    resp.setEncoding('utf-8');
-                    var responseString = '';
-
-                    resp.on('data', function(data) {
-                        responseString += data;
-                    });
-
-                    resp.on('end', function() {
-                        console.log(responseString);
-                        if (resp.statusCode === 200) {
-                            var responseObject = JSON.parse(responseString);
-                            callback(responseObject);
-                        } else {
-                            console.log("An unexpected response occured");
-                            callback(null);
-                        }
-                    });
+                resp.on('data', function(data) {
+                    responseString += data;
                 });
 
-                req.on('error', function(e) {
-                    console.log(e.message);
+                resp.on('end', function() {
+                    console.log(responseString);
+                    if (resp.statusCode === 200) {
+                        var responseObject = JSON.parse(responseString);
+                        callback(responseObject);
+                    } else {
+                        console.log("An unexpected response occured");
+                        callback(null);
+                    }
                 });
+            });
 
-                req.write(dataString);
-                req.end();
-                }
+            req.on('error', function(e) {
+                console.log(e.message);
+            });
+
+            req.write(dataString);
+            req.end();
+            }
 
 
-                invokeRulesService(rules, '/planos_previdencia_bluemix/1.0/planos_previdencia_decision/1.1', {
-                    "lista_criterios" : {
-                        "rendaMensal" : rendaMensal,
-                        "valorContribuicao" : valorContribuicao,
-                        "declaracaoIR":declaracaoIR,
-                        "planoPrevidencia":planoPrevidencia,
-                        "contribuicao_versus_renda":contribuicao_versus_renda
-                    }, "__DecisionID__": __DecisionID__,
-                    "threshold_renda_valorContribuicao":threshold_renda_valorContribuicao
+            invokeRulesService(rules, '/planos_previdencia_bluemix/1.0/planos_previdencia_decision/1.1', {
+                "lista_criterios" : {
+                    "rendaMensal" : rendaMensal,
+                    "valorContribuicao" : valorContribuicao,
+                    "declaracaoIR":declaracaoIR,
+                    "planoPrevidencia":planoPrevidencia,
+                    "contribuicao_versus_renda":contribuicao_versus_renda
+                }, "__DecisionID__": __DecisionID__,
+                "threshold_renda_valorContribuicao":threshold_renda_valorContribuicao
 
-                }, function(results) {
-                    console.log(results.lista_criterios);
-                });
+            }, function(results) {
+                    result["rendaMensal"] = rendaMensal;
+                    result["valorContribuicao"]=valorContribuicao;
+                    result["declaracaoIR"]=declaracaoIR;
+                    result["planoPrevidencia" ]=results.lista_criterios.planoPrevidencia;
+
+                res.render("question_show",{questions: global_questions,result: result });
+                // res.render("question_result",{questions: })
+            });
     },
 
 };
