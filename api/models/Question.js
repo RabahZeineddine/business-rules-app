@@ -7,7 +7,12 @@
 
 module.exports = {
 
-   connection: 'couch',
+    adapter: 'couch',
+  migrate: 'safe',
+  id: {
+    primaryKey: true,
+    type: 'string'
+  },
   attributes: {
     questions:{
         id : 'String',
