@@ -1,7 +1,7 @@
 /**
- * UserController
+ * QuestionController
  *
- * @description :: Server-side logic for managing users
+ * @description :: Server-side logic for managing questions
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
@@ -76,7 +76,6 @@ module.exports = {
                 });
 
                 resp.on('end', function() {
-                    console.log(responseString);
                     if (resp.statusCode === 200) {
                         var responseObject = JSON.parse(responseString);
                         callback(responseObject);
