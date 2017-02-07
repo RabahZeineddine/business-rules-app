@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.base:VariableSet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.base="http://ilog.rules.studio/model/base.ecore">
+  <name>lista_criterios</name>
+  <uuid>862dfbf0-3820-416c-b366-12efd976ab95</uuid>
+  <variables name="lista_criterios" type="Criterios" initialValue="" verbalization="criterios"/>
+</ilog.rules.studio.model.base:VariableSet>

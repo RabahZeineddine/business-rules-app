@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.rules.studio.model.decisionservice:Operation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.ibm.rules.studio.model.decisionservice="http://com.ibm.rules.studio/model/decisionservice.ecore" xmlns:ilog.rules.studio.model.query.extractor="http://ilog.rules.studio/model/query/extractor.ecore" rulesetName="planos_previdencia_decision" targetRuleProjectName="planos-previdencia-rule">
+  <name>planos_previdencia_decision</name>
+  <uuid>0e58afe1-7d2f-489b-a09f-2a913e45e220</uuid>
+  <referencedVariables variableName="lista_criterios" variableSetName="lista_criterios" direction="IN_OUT">
+    <variableSet href="../rules/lista_criterios.var#862dfbf0-3820-416c-b366-12efd976ab95"/>
+  </referencedVariables>
+  <extractor xsi:type="ilog.rules.studio.model.query.extractor:QueryExtractor" name="planos_previdencia_decision_extractor" validator="Default Validator"/>
+  <targetRuleProject href="../../planos-previdencia-rule#b3c67ec7-0958-417a-b3c4-c88de4731878"/>
+</com.ibm.rules.studio.model.decisionservice:Operation>

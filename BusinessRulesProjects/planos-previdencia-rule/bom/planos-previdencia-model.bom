@@ -1,0 +1,16 @@
+
+property loadGetterSetterAsProperties "true"
+property origin "xom:/planos-previdencia-rule//planos-previdencia-model"
+property uuid "7a96b2f4-4891-419c-890f-4acb0275a52e"
+
+public class Criterios
+{
+    public float contribuicao_versus_renda;
+    public string declaracaoIR;
+    public string planoPrevidencia;
+    public float rendaMensal;
+    public float valorContribuicao;
+    public Criterios(float rendaMensal, float valorContribuicao, string declaracaoIR);
+    public Criterios();
+}
+

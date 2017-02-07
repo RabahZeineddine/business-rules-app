@@ -1,0 +1,15 @@
+# Vocabulary Properties
+uuid = df312a58-b491-4fb0-a973-e3cb82330616
+
+# Criterios
+Criterios#concept.label = criterios
+Criterios.contribuicao_versus_renda#phrase.action = set the contribuicao versus renda of {this} to {contribuicao versus renda}
+Criterios.contribuicao_versus_renda#phrase.navigation = {contribuicao versus renda} of {this}
+Criterios.declaracaoIR#phrase.action = set the declaracao IR of {this} to {declaracao IR}
+Criterios.declaracaoIR#phrase.navigation = {declaracao IR} of {this}
+Criterios.planoPrevidencia#phrase.action = set the plano previdencia of {this} to {plano previdencia}
+Criterios.planoPrevidencia#phrase.navigation = {plano previdencia} of {this}
+Criterios.rendaMensal#phrase.action = set the renda mensal of {this} to {renda mensal}
+Criterios.rendaMensal#phrase.navigation = {renda mensal} of {this}
+Criterios.valorContribuicao#phrase.action = set the valor contribuicao of {this} to {valor contribuicao}
+Criterios.valorContribuicao#phrase.navigation = {valor contribuicao} of {this}

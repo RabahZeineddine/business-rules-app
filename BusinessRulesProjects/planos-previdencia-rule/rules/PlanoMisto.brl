@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.brl:ActionRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.brl="http://ilog.rules.studio/model/brl.ecore">
+  <name>PlanoMisto</name>
+  <uuid>890b6493-74a2-443d-95c9-bb7253044347</uuid>
+  <locale>en_US</locale>
+  <definition><![CDATA[if the contribuicao versus renda of criterios is more than 0.12 and the declaracao IR of criterios is "Completa" 
+then
+	set the plano previdencia of criterios to "PGBL + VGBL";  ]]></definition>
+</ilog.rules.studio.model.brl:ActionRule>
