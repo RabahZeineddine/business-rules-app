@@ -1,10 +1,22 @@
+declared-services: 
+      business-rules-example-app-cloudantNoSQLDB: 
+         label: "cloudantNoSQLDB"
+         plan: "Lite"
+      business-rules-example-app-BusinessRules:
+         label: "businessrules"
+         plan: "standard"
+      availability-monitoring-auto:
+         label: "AvailabilityMonitoring"
+         plan: "Lite"
 applications:
 - path: .
   memory: 512M
   instances: 1
   domain: mybluemix.net
-  name: rzeined-final-test
-  host: rzeined-final-test
+  name: business-rules-example-app
+  host: business-rules-example-app
   disk_quota: 1024M
   services:
-  - rzeined-final-test-cloudantNoSQLDB
+  - business-rules-example-app-cloudantNoSQLDB
+  - business-rules-example-app-BusinessRules
+  - availability-monitoring-auto

@@ -9,8 +9,8 @@ var global_questions;
 module.exports = {
 	show: function(req,res){
         //Change the url with the right cloudantDB link
-        var cloudant = require('cloudant')('https://a0002eb5-0af4-4fad-8476-ca5aee1bc2bc-bluemix:534c44621147eb8f20e2173e27ceb7f411f26c734132d0c160d593ed77975d03@a0002eb5-0af4-4fad-8476-ca5aee1bc2bc-bluemix.cloudant.com');
-        cloudant = cloudant.db.use('previdenciadb');
+        var cloudant = require('cloudant')('https://c04809c2-167c-4478-83c4-44d2c30c1362-bluemix:7a32c96c82e3c1d274cf008bc43957e2c309764fc21bf4951bf18a6268366c8e@c04809c2-167c-4478-83c4-44d2c30c1362-bluemix.cloudant.com');
+        cloudant = cloudant.db.use('business_rules_db');
 	    cloudant.find({"selector": {"_id":{"$gt":null}},"fields": ["questions"]},
 	   function(err, data){
 	  	if(!err){
