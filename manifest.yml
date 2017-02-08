@@ -1,3 +1,10 @@
+declared-services: 
+      business-rules-example-app-cloudantNoSQLDB: 
+         label: "cloudantNoSQLDB"
+         plan: "Lite"
+      business-rules-example-app-BusinessRules:
+         label: "businessrules"
+         plan: "standard"
 applications:
 - path: .
   memory: 512M
