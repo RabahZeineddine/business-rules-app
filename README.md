@@ -1,4 +1,4 @@
-# test-project
+# Business-rules-app
 
 a [Sails](http://sailsjs.org) application
 

@@ -9,7 +9,7 @@ declared-services:
          label: "AvailabilityMonitoring"
          plan: "Lite"
 applications:
-- path: .
+- path: ./app.js
   memory: 512M
   instances: 1
   domain: mybluemix.net
