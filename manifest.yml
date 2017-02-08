@@ -5,8 +5,11 @@ declared-services:
       business-rules-example-app-BusinessRules:
          label: "businessrules"
          plan: "standard"
+      availability-monitoring-auto:
+         label: "AvailabilityMonitoring"
+         plan: "Lite"
 applications:
-- path: ./Gruntfile.js
+- path: .
   memory: 512M
   instances: 1
   domain: mybluemix.net
