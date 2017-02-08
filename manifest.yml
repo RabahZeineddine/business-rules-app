@@ -6,7 +6,7 @@ declared-services:
          label: "businessrules"
          plan: "standard"
 applications:
-- path: .
+- path: ./Gruntfile.js
   memory: 512M
   instances: 1
   domain: mybluemix.net
