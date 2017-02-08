@@ -1,3 +1,5 @@
 # test-project
 
 a [Sails](http://sailsjs.org) application
+
+[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/BluemixBrasil/business-rules-app)
