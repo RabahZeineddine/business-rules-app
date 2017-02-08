@@ -27,14 +27,13 @@ module.exports = {
 
 
     calculate: function(req,res){
-      
-        var result = {};
+var result = {};
         var url = require('url'), https = require('https');
-
+        // https://brsv2-ff27454a.ng.bluemix.net/DecisionService/rest/Bluemix/1.0/planos_previdencia_decision/1.1
         var rules = {
-            "executionRestUrl" : "https://brsv2-48900cea.ng.bluemix.net/DecisionService/rest",
+            "executionRestUrl" : "https://brsv2-ff27454a.ng.bluemix.net/DecisionService/rest",
             "user" : "resAdmin",
-            "password" : "1hvb23e0v0do2"
+            "password" : "1jecmjoq3sx9d"
         };
 
 
@@ -42,6 +41,9 @@ module.exports = {
         var rendaMensal = req.param('rendaMensal');
         var valorContribuicao = req.param('valorContribuicao');
         var declaracaoIR = req.param('declaracaoIR');
+        var declaracaoIR_Temp = declaracaoIR;
+        if (declaracaoIR.localeCompare('Não sei')==0) declaracaoIR = 'naosei';
+        
         var planoPrevidencia = "String";
         var contribuicao_versus_renda = 100; // Will change on response ( i think ) 
         var __DecisionID__ = "1";  //Unique ID 
@@ -95,7 +97,7 @@ module.exports = {
             }
 
 
-            invokeRulesService(rules, '/planos_previdencia_bluemix/1.0/planos_previdencia_decision/1.1', {
+            invokeRulesService(rules, '/Bluemix/1.0/planos_previdencia_decision/1.3', {
                 "lista_criterios" : {
                     "rendaMensal" : rendaMensal,
                     "valorContribuicao" : valorContribuicao,
@@ -108,7 +110,7 @@ module.exports = {
             }, function(results) {
                     result["rendaMensal"] = rendaMensal;
                     result["valorContribuicao"]=valorContribuicao;
-                    result["declaracaoIR"]=declaracaoIR;
+                    result["declaracaoIR"]=declaracaoIR_Temp;
                     result["planoPrevidencia" ]=results.lista_criterios.planoPrevidencia;
 
                 res.render("question_show",{questions: global_questions,result: result });
